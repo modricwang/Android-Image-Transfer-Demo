@@ -1,6 +1,8 @@
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -26,6 +28,13 @@ android {
             assets.srcDirs = ['assets']
         }
 
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+
         // Move the tests to tests/java, tests/res, etc...
         instrumentTest.setRoot('tests')
 
@@ -38,4 +47,8 @@ android {
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }
+}
+
+repositories {
+    google()
 }
